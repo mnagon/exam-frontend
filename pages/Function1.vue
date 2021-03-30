@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto max-w-screen-sm">
     <div v-for="products in noEditablePriceSubProjects" class="mb-4">
       <p>name: {{ products.name }}</p>
       <p>totalSubProductWeight: {{ products.totalSubProductWeight }}</p>
@@ -34,5 +34,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style></style>

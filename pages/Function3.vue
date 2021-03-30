@@ -1,5 +1,5 @@
 <template>
-  <div>Function3</div>
+  <div class="container mx-auto max-w-screen-sm"></div>
 </template>
 
 <script>
