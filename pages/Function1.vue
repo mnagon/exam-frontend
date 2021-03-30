@@ -1,6 +1,10 @@
 <template>
   <div class="container mx-auto max-w-screen-sm">
-    <div v-for="products in noEditablePriceSubProjects" class="mb-4">
+    <div
+      v-for="(products, i) in noEditablePriceSubProjects"
+      :key="i"
+      class="mb-4"
+    >
       <p>name: {{ products.name }}</p>
       <p>totalSubProductWeight: {{ products.totalSubProductWeight }}</p>
       <hr />
@@ -17,7 +21,7 @@ export default Vue.extend({
     return { data }
   },
   computed: {
-    noEditablePriceProducts() {
+    noEditablePriceProducts(this: any) {
       return this.data.filter((e: any) => !e.is_editable_price)
     },
     noEditablePriceSubProjects() {

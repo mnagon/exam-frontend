@@ -18,7 +18,6 @@ export default Vue.extend({
   props: {
     pokemon: {
       type: Object as PropType<any>,
-      require: true,
     },
   },
 })

@@ -19,19 +19,19 @@ export default Vue.extend({
     }
   },
   computed: {
-    firstFormat() {
+    firstFormat(this: any) {
       return moment(new Date(this.date)).format('l h:mm')
     },
-    thaiFormat() {
+    thaiFormat(this: any) {
       return moment(new Date(this.date)).lang('th').format('LL')
     },
-    dayOfMonth() {
+    dayOfMonth(this: any) {
       return moment(new Date(this.date)).daysInMonth()
     },
-    quater() {
+    quater(this: any) {
       return moment(new Date(this.date)).quarter()
     },
-    timeStamp() {
+    timeStamp(this: any) {
       return moment(new Date(this.date)).unix()
     },
   },

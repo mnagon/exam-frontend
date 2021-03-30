@@ -102,8 +102,22 @@ export default Vue.extend({
   data(): State {
     return {
       isValid: false,
-      form: this.createFreshForm(),
-      invalidMessage: this.createFreshForm(),
+      form: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        verifyPassword: '',
+        gender: '',
+      },
+      invalidMessage: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        verifyPassword: '',
+        gender: '',
+      },
     }
   },
   methods: {
@@ -120,13 +134,13 @@ export default Vue.extend({
     validationForm(): boolean {
       this.invalidMessage = this.createFreshForm()
       Object.keys(this.form).forEach(
-        function (key: string): void {
+        function (this: any, key: string): void {
           if (!this.form[key]) {
             this.invalidMessage[key] = 'Please fill out this field.'
           }
         }.bind(this)
       )
-      if (this.form.password != this.form.verifyPassword) {
+      if (this.form.password !== this.form.verifyPassword) {
         this.invalidMessage.verifyPassword = 'Verify password is not correct'
       }
       return Object.values(this.invalidMessage).every((e) => !e)
