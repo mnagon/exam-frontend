@@ -37,7 +37,7 @@ export default Vue.extend({
     this.isLoading = false
   },
   methods: {
-    async fetchPokemon(pokemonNumber: number): any {
+    async fetchPokemon(pokemonNumber: number): Promise<any> {
       const pokemon = await this.$axios.$get(
         'https://pokeapi.co/api/v2/pokemon/' + pokemonNumber
       )
