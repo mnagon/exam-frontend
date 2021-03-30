@@ -18,13 +18,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PokemonSkeleton from './PokemonSkeleton.vue'
 interface State {
   isLoading: boolean
   pokemonList: any[]
 }
 export default Vue.extend({
-  components: { PokemonSkeleton },
   data(): State {
     return {
       isLoading: true,

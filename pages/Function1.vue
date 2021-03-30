@@ -1,9 +1,38 @@
 <template>
-  <div>Function 1</div>
+  <div class="container mx-auto">
+    <div v-for="products in noEditablePriceSubProjects" class="mb-4">
+      <p>name: {{ products.name }}</p>
+      <p>totalSubProductWeight: {{ products.totalSubProductWeight }}</p>
+      <hr />
+    </div>
+  </div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import Vue from 'vue'
+import data from '~/static/exam-data.json'
+
+export default Vue.extend({
+  asyncData() {
+    return { data }
+  },
+  computed: {
+    noEditablePriceProducts() {
+      return this.data.filter((e: any) => !e.is_editable_price)
+    },
+    noEditablePriceSubProjects() {
+      return [
+        ...this.noEditablePriceProducts.reduce(
+          (a: any[], b: any) => a.concat(b.products),
+          []
+        ),
+      ].map((e) => ({
+        name: e.name,
+        totalSubProductWeight: e.amount * e.weight,
+      }))
+    },
+  },
+})
 </script>
 
 <style></style>
